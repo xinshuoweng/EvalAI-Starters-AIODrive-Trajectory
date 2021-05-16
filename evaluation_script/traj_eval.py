@@ -277,6 +277,5 @@ def compute_metrics(gt_json, pred_json, split='test', total_sample=20):
     for key, value in metric_all.items():        
         if '20' in key:      # only add length of 20 to output metric for EvalAI leaderboard
             output[key] = value
-    output['Total'] = output['ADE_20']      # add main metric
 
     return output
