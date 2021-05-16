@@ -1,5 +1,5 @@
 import random
-
+from evaluation_script.traj_eval import compute_metrics
 
 def evaluate(test_annotation_file, user_submission_file, phase_codename, **kwargs):
     print("Starting Evaluation.....")
@@ -39,43 +39,31 @@ def evaluate(test_annotation_file, user_submission_file, phase_codename, **kwarg
             'submitted_at': u'2017-03-20T19:22:03.880652Z'
         }
     """
+    print("Submission related metadata:")
+    print(kwargs["submission_metadata"])
+    
+    metrics = compute_metrics(test_annotation_file, user_submission_file, phase_codename)
     output = {}
-    if phase_codename == "dev":
-        print("Evaluating for Dev Phase")
+    if phase_codename == "val":
+        print("Evaluating for Validation Phase")
         output["result"] = [
             {
-                "train_split": {
-                    "Metric1": random.randint(0, 99),
-                    "Metric2": random.randint(0, 99),
-                    "Metric3": random.randint(0, 99),
-                    "Total": random.randint(0, 99),
-                }
+                "val_split": metrics
             }
         ]
         # To display the results in the result file
-        output["submission_result"] = output["result"][0]["train_split"]
-        print("Completed evaluation for Dev Phase")
+        output["submission_result"] = output["result"][0]["val_split"]
+        print("Completed evaluation for Validation Phase")
+
     elif phase_codename == "test":
         print("Evaluating for Test Phase")
         output["result"] = [
             {
-                "train_split": {
-                    "Metric1": random.randint(0, 99),
-                    "Metric2": random.randint(0, 99),
-                    "Metric3": random.randint(0, 99),
-                    "Total": random.randint(0, 99),
-                }
-            },
-            {
-                "test_split": {
-                    "Metric1": random.randint(0, 99),
-                    "Metric2": random.randint(0, 99),
-                    "Metric3": random.randint(0, 99),
-                    "Total": random.randint(0, 99),
-                }
-            },
+                "test_split": metrics
+            }
         ]
         # To display the results in the result file
-        output["submission_result"] = output["result"][0]
+        output["submission_result"] = output["result"][0]["test_split"]
         print("Completed evaluation for Test Phase")
+
     return output

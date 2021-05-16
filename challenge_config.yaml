@@ -19,8 +19,7 @@ leaderboard:
   - id: 1
     schema:
       {
-        "labels": ["ADE_10", "FDE_10", "APD_10", "FPD_10", "MissRate_10", "ADE_20", "FDE_20", "APD_20", "FPD_20", "MissRate_20", \
-          "ADE_50", "FDE_50", "APD_50", "FPD_50", "MissRate_50"],
+        "labels": ["ADE_20", "FDE_20", "APD_20", "FPD_20", "MR_20"],
         "default_order_by": "ADE_20",
       }
 
@@ -58,7 +57,7 @@ challenge_phases:
     is_submission_public: True
     start_date: 2019-01-01 00:00:00
     end_date: 2099-05-24 23:59:59
-    test_annotation_file: annotations/aiodrive_traj_test.txt
+    test_annotation_file: annotations/aiodrive_traj_test.json
     codename: test
     max_submissions_per_day: 3
     max_submissions_per_month: 10

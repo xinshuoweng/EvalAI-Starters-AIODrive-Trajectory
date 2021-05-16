@@ -7,18 +7,21 @@ def get_curr_working_dir():
     curr_working_dir = os.getcwd()
     return curr_working_dir
 
-
 def run():
     current_working_directory = get_curr_working_dir()
     sys.path.append("{}".format(current_working_directory))
     sys.path.append("{}/challenge_data/challenge_1".format(current_working_directory))
 
+    # challenge_id = 1
     challenge_id = 1
-    challenge_phase = "test"  # Add the challenge phase codename to be tested
-    annotation_file_path = "{}/annotations/test_annotations_testsplit.json".format(
+    # challenge_phase = "test"  # Add the challenge phase codename to be tested
+    challenge_phase = "val"  # Add the challenge phase codename to be tested
+    # annotation_file_path = "{}/annotations/aiodrive_traj_test.json".format(
+    annotation_file_path = "{}/annotations/aiodrive_traj_val.json".format(
         current_working_directory
     )  # Add the test annotation file path
-    user_submission_file_path = "{}/submission.json".format(
+    # user_submission_file_path = "{}/submission.json".format(
+    user_submission_file_path = "{}/submission_val.json".format(
         current_working_directory
     )  # Add the sample submission file path
 
@@ -55,7 +58,6 @@ def run():
         submission_metadata=submission_metadata,
     )
     print("Evaluated Successfully!")
-
 
 if __name__ == "__main__":
     run()
