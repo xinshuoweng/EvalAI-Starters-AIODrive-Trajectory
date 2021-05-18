@@ -7,8 +7,7 @@ evaluation_details: templates/evaluation_details.html       # done
 terms_and_conditions: templates/terms_and_conditions.html   # done
 image: logo.png
 submission_guidelines: templates/submission_guidelines.html # done
-leaderboard_description: Empty
-evaluation_script: evaluation_script/main.py
+evaluation_script: evaluation_script.zip
 remote_evaluation: False
 is_docker_based: False
 start_date: 2019-01-01 00:00:00
@@ -19,6 +18,12 @@ blocked_emails_domains: []
 
 leaderboard:
   - id: 1
+    schema:
+      {
+        "labels": ["ADE_20", "FDE_20", "APD_20", "FPD_20", "MsR_20"],
+        "default_order_by": "ADE_20",
+      }
+  - id: 2
     schema:
       {
         "labels": ["ADE_20", "FDE_20", "APD_20", "FPD_20", "MsR_20"],
@@ -93,7 +98,7 @@ challenge_phase_splits:
     leaderboard_decimal_precision: 3
     is_leaderboard_order_descending: True
   - challenge_phase_id: 2
-    leaderboard_id: 1
+    leaderboard_id: 2
     dataset_split_id: 2
     visibility: 3
     leaderboard_decimal_precision: 3

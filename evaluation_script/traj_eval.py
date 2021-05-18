@@ -2,8 +2,8 @@
 # email: xinshuo.weng@gmail.com
 
 import os, json, copy, numpy as np, sys
-from evaluation_script.traj_metrics import compute_ADE, compute_FDE, compute_APD, compute_FPD, best_of_K
-from evaluation_script.traj_utils import fileparts, AverageMeter, remove_list_from_list, remove_unique_item_from_list
+from .traj_metrics import compute_ADE, compute_FDE, compute_APD, compute_FPD, best_of_K
+from .traj_utils import fileparts, AverageMeter, remove_list_from_list, remove_unique_item_from_list
 
 len2skip = {10: 1, 20: 2, 50: 5}        # number of skip frames for each pred_len
 
@@ -263,7 +263,7 @@ def compute_metrics(gt_json, pred_json, split='test', total_sample=20):
 
         # print average value
         print('')
-        print('Ave: ', end =" ")
+        print('Ave: ', end=" ")
         for metric in ['ADE', 'FDE', 'APD', 'FPD', 'MsR']:
             ave_value = metric_all['%s_%d' % (metric, pred_len)]
             print('%6.3f ' % ave_value, end=" ")
@@ -277,5 +277,6 @@ def compute_metrics(gt_json, pred_json, split='test', total_sample=20):
     for key, value in metric_all.items():        
         if '20' in key:      # only add length of 20 to output metric for EvalAI leaderboard
             output[key] = value
+    print(output)
 
     return output

@@ -1,5 +1,5 @@
 import random
-from evaluation_script.traj_eval import compute_metrics
+from .traj_eval import compute_metrics
 
 def evaluate(test_annotation_file, user_submission_file, phase_codename, **kwargs):
     print("Starting Evaluation.....")
